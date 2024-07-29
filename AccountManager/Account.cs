@@ -59,6 +59,7 @@ namespace AccountManager
             double depositAmount = double.Parse(Console.ReadLine());
             AccountBalance += depositAmount;
             Console.WriteLine("Amount added succesfully");
+            SerialDeserial.SerializeData(Class1.accounts);
         }
 
         public void Withdraw()
@@ -66,7 +67,7 @@ namespace AccountManager
             Console.WriteLine("Enter amount to withdraw: ");
             double withdrawAmount = double.Parse(Console.ReadLine());
 
-            if (withdrawAmount < AccountBalance)
+            if (withdrawAmount > AccountBalance)
             {
                 Console.WriteLine("Insufficient Balance.");
             }
@@ -78,6 +79,7 @@ namespace AccountManager
             {
                 AccountBalance -= withdrawAmount;
                 Console.WriteLine("New Balance:" + AccountBalance);
+                SerialDeserial.SerializeData(Class1.accounts);
             }
 
         }
